@@ -1,0 +1,32 @@
+{
+  "workspaceId": "68067d79-2c1d-4c80-89fe-42087c7890f5",
+  "originalOntologyId": "5010003c-9c95-4671-8809-1fee9d1ab2bf",
+  "replacementOntologyId": "1a3f6ea0-52fc-458f-a34b-c1561cdc50cb",
+  "replacementOntologyName": "TranslinkTransportV2",
+  "status": "v2-applied-native-agent-validated-graph-links-cut-over-data-agent-cutover-pending",
+  "proposal": {
+    "entityCount": 8,
+    "relationshipCount": 7,
+    "validation": "Fabric Ontology Agent reported clean validation; source tables and joins verified",
+    "applied": true,
+    "appliedResult": "Fabric confirmed 8 entity types and 7 relationships created successfully, with no validation or apply issues.",
+    "nativeAgentTest": {
+      "question": "List all venues using the bound Venue data. Return venue_id, venue_name, latitude and longitude and cite the source.",
+      "venueId": "suncorp-stadium",
+      "venueName": "Suncorp Stadium",
+      "latitude": -27.4648,
+      "longitude": 153.0095,
+      "source": "TranslinkNetwork.dbo.venues",
+      "passed": true
+    },
+    "mcpVerified": {
+      "askOntologyAvailable": true,
+      "entityCount": 8,
+      "entityMetadataSnapshot": "v2-entities.json"
+    }
+  },
+  "cutoverComplete": false,
+  "graphLinksCutOver": true,
+  "remaining": "Published TranslinkPlanner data agent and its legacy live-binding inspector still reference V1. Reattach and republish the data agent and update inspector format support before deleting V1. V2 creation scripts must not use the legacy prepare-fabric-ontology.mjs JSON format.",
+  "originalDeleted": false
+}

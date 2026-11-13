@@ -1,0 +1,15 @@
+{
+  "workspaceId": "68067d79-2c1d-4c80-89fe-42087c7890f5",
+  "workspaceName": "Translink",
+  "capacityId": "b245cbd6-c02c-4d41-8c9b-1aecb9819f27",
+  "lakehouseName": "TranslinkNetwork",
+  "lakehouseId": "aaf94586-9e5c-431a-a97c-c0fa6e420c0f",
+  "ontologyName": "TranslinkTransport",
+  "ontologyId": "5010003c-9c95-4671-8809-1fee9d1ab2bf",
+  "graphOntologyName": "TranslinkTransportV2",
+  "graphOntologyId": "1a3f6ea0-52fc-458f-a34b-c1561cdc50cb",
+  "notebookName": "Translink_Ingest_GTFS",
+  "notebookId": "5f65f782-db95-417a-99fc-df3021cefb13",
+  "dataAgentName": "TranslinkPlanner",
+  "dataAgentId": "4fe2dc7e-a79c-4d06-8c0a-3a26194eaa3c"
+}

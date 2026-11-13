@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Translink | Presenter guide, data sources &amp; architecture</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      document.documentElement.setAttribute("data-theme", param === "dark" ? "dark" : "light");
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f4f8fc; --cp-bg-elevated: #ffffff; --cp-surface: #ffffff;
+      --cp-surface-soft: #f0f5fb; --cp-border: #d7e3ef; --cp-border-strong: #919191;
+      --cp-text: #242424; --cp-text-muted: #5c5c5c; --cp-text-soft: #6f6f6f;
+      --cp-accent: #005fb8; --cp-accent-hover: #004b91; --cp-accent-soft: rgba(0,95,184,.08);
+      --cp-accent-fg: #ffffff; --cp-success: #16a34a; --cp-danger: #dc2626;
+      --cp-warning: #f59e0b; --cp-link: #0078d4; --cp-shadow: 0 18px 48px rgba(0,0,0,.12);
+      --cp-overlay: rgba(255,255,255,.8); --cp-panel: rgba(255,255,255,.86);
+      --cp-panel-strong: rgba(255,255,255,.96); --cp-sheen: rgba(255,255,255,.55);
+      --cp-highlight: rgba(0,95,184,.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #111d2b; --cp-bg-elevated: #162536; --cp-surface: #192b3f;
+      --cp-surface-soft: #20354b; --cp-border: #36506b; --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede; --cp-text-muted: #b0b0b0; --cp-text-soft: #b0b0b0;
+      --cp-accent: #80c4ff; --cp-accent-hover: #a6d6ff; --cp-accent-soft: rgba(128,196,255,.14);
+      --cp-accent-fg: #1a1a1a; --cp-success: #4ade80; --cp-danger: #f87171;
+      --cp-warning: #fbbf24; --cp-link: #4da6ff; --cp-shadow: 0 18px 48px rgba(0,0,0,.32);
+      --cp-overlay: rgba(25,43,63,.88); --cp-panel: rgba(25,43,63,.72);
+      --cp-panel-strong: rgba(25,43,63,.96); --cp-sheen: rgba(255,255,255,.04);
+      --cp-highlight: rgba(128,196,255,.12);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cp-bg); color: var(--cp-text); font: 16px/1.7 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    main { max-width: 1120px; margin: auto; padding: 40px 24px 64px; }
+    h1,h2,h3 { line-height: 1.25; font-weight: 650; }
+    h1 { font-size: clamp(30px,4vw,46px); margin: 12px 0 16px; letter-spacing: -1.5px; }
+    h2 { font-size: 26px; margin: 0 0 20px; letter-spacing: -.5px; }
+    h3 { font-size: 18px; margin: 0 0 12px; }
+    p { margin: 12px 0; }
+    a { color: var(--cp-link); overflow-wrap: anywhere; }
+    .eyebrow { font-size: 11px; color: var(--cp-accent); letter-spacing: 1.7px; font-weight: 700; }
+    .muted, small { color: var(--cp-text-muted); }
+    header { margin-bottom: 32px; }
+    nav, .actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    nav { margin-top: 20px; }
+    nav a { padding: 6px 12px; border: 1px solid var(--cp-border); border-radius: 10px; text-decoration: none; background: var(--cp-surface); }
+    section { margin: 24px 0; padding: 28px; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; }
+    blockquote { padding: 16px 20px; background: var(--cp-accent-soft); border-left: 4px solid var(--cp-accent); margin: 16px 0; }
+    .callout { padding: 14px 18px; border: 1px solid var(--cp-border); border-radius: 10px; background: var(--cp-surface-soft); }
+    .badge { padding: 6px 12px; background: var(--cp-accent-soft); color: var(--cp-accent); border-radius: 10px; font-size: 12px; font-weight: 650; }
+    button { font: inherit; cursor: pointer; border: 1px solid var(--cp-border); border-radius: 10px; background: var(--cp-surface); color: var(--cp-accent); padding: 8px 14px; }
+    button:hover { background: var(--cp-accent-soft); }
+    :focus-visible { outline: 2px solid var(--cp-accent); outline-offset: 3px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th,td { text-align: left; padding: 12px; vertical-align: top; border-bottom: 1px solid var(--cp-border); }
+    th { background: var(--cp-surface-soft); }
+    code { font: 13px/1.6 Consolas, "Courier New", Courier, monospace; overflow-wrap: anywhere; }
+    .flow { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin: 20px 0; }
+    .node { padding: 18px; background: var(--cp-bg); border: 1px solid var(--cp-border); border-radius: 10px; }
+    .node strong { display: block; color: var(--cp-accent); margin-bottom: 8px; }
+    .node small { display: block; line-height: 1.6; }
+    .flow-label { font-size: 12px; color: var(--cp-text-muted); }
+    .question { border-top: 1px solid var(--cp-border); margin-top: 24px; padding-top: 24px; }
+    .prompt { font-size: 14px; padding: 16px; background: var(--cp-bg); border-radius: 10px; user-select: text; }
+    .expected { font-weight: 600; }
+    footer { color: var(--cp-text-muted); font-size: 13px; margin-top: 32px; }
+    @media(max-width:700px) { main { padding: 24px 16px; } section { padding: 20px; } .flow { grid-template-columns: 1fr; } }
+    @media print { body { background: var(--cp-surface); } main { padding: 0; max-width: none; } nav,button,#copy-status { display: none; } section { break-inside: avoid; } .question { break-inside: avoid; } a { text-decoration: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <span class="eyebrow">TRANSLINK COMMUNITY IMPACT STUDIO · PRESENTER GUIDE</span>
+    <h1>A connected network.<br>Evidence-led planning conversations.</h1>
+    <p class="muted">A five-minute business demo: where the data comes from, how the Fabric app works, and how to test its answers.</p>
+    <div class="actions">
+      <span class="badge">Deployed in Fabric · Rayfin AppBackend</span>
+      <a href="https://wide-grove-1455796ee4-westus.webapp.fabricapps.net/" target="_blank" rel="noopener noreferrer">Open the deployed app</a>
+      <button type="button" id="print">Print / save as PDF</button>
+    </div>
+    <nav aria-label="Presenter guide sections">
+      <a href="#story">Talk track</a><a href="#data">Data sources</a><a href="#architecture">Architecture</a>
+      <a href="#questions">Q1–Q4 prompts</a><a href="#what-if">Live what-if walkthrough</a><a href="#accuracy">Accuracy &amp; boundaries</a>
+    </nav>
+  </header>
+
+  <section id="story">
+    <span class="eyebrow">01 · OPENING STORY</span>
+    <h2>What to say and show</h2>
+    <blockquote>“I am planning access to a Suncorp Stadium event. Which bus corridors are candidates? What would a Milton station closure affect? Could extra evening services reduce waiting, and would a delayed train break an interchange connection? We can explore those decisions using a shared transport model and see which answers are source facts versus planning assumptions.”</blockquote>
+    <ol>
+      <li><strong>Orient the planner:</strong> show Brisbane routes, stations and stops; focus on Suncorp Stadium. Explain that this is a selected network subset, not all Queensland.</li>
+      <li><strong>Find candidate corridors:</strong> open the protected app; Fabric SSO and its backend check run automatically. Once connected, select <strong>Use Q1 → Ask Fabric</strong>. Read the short route list and source citation; expand query details only if asked.</li>
+      <li><strong>Assess a closure:</strong> run Q2 for the rail service patterns that call at Milton. This is feed-wide exposure, not a dated operational disruption analysis. Open the <a href="https://app.fabric.microsoft.com/groups/68067d79-2c1d-4c80-89fe-42087c7890f5/ontologies/1a3f6ea0-52fc-458f-a34b-c1561cdc50cb?experience=fabric-developer" target="_blank" rel="noopener noreferrer">V2 ontology graph</a> to explain the connections.</li>
+      <li><strong>Explore alternatives:</strong> use Q3/Q4 or the scenario sliders. State clearly that these calculations use hypothetical inputs, not a date-specific network simulation.</li>
+      <li><strong>Close:</strong> “The value is a shared planning vocabulary and visible evidence. The next step toward operational planning is validated dated routing, transfer rules and demand data—not more confident AI wording.”</li>
+    </ol>
+    <div class="callout"><strong>If Ask Fabric is disabled:</strong> it is waiting for automatic Fabric SSO/backend verification or an in-flight answer. When connected, extra login/retry controls are hidden. If an expired session or MFA requires interaction, use <strong>Continue with Fabric</strong>; for a service error use <strong>Retry connection</strong> and read the error. There is no separate backend password, and authentication is never bypassed.</div>
+  </section>
+
+  <section id="data">
+    <span class="eyebrow">02 · DATA PROVENANCE</span>
+    <h2>Where did the information come from?</h2>
+    <p><strong>Transport source:</strong> Translink / Queensland Department of Transport and Main Roads, via the <a href="https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-translink" target="_blank" rel="noopener noreferrer">Queensland Government GTFS catalogue</a>. The ingestion downloads the <a href="https://gtfsrt.api.translink.com.au/GTFS/SEQ_GTFS.zip" target="_blank" rel="noopener noreferrer">official South East Queensland GTFS ZIP</a>.</p>
+    <p><strong>Snapshot:</strong> imported <strong>10 November 2026</strong>. The downloaded map feed reported coverage 10 November 2026–9 January 2027; that range does not mean every trip operates every day. This demo does not refresh automatically.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Source / input</th><th>What it supplies</th><th>Transformation or limitation</th></tr></thead>
+        <tbody>
+          <tr><td><code>routes.txt, trips.txt</code></td><td>Route IDs, public names, modes, trip IDs and service IDs.</td><td>Selects rail service patterns intersecting inner Brisbane and selected bus corridors. “Major bus” is a demo selection, not an official ranking.</td></tr>
+          <tr><td><code>stops.txt, stop_times.txt</code></td><td>Stop locations and ordered scheduled arrivals/departures for trips.</td><td>StopCall uses trip ID + stop sequence. Route–stop membership comes from trips and stop calls, not proximity.</td></tr>
+          <tr><td><code>calendar.txt, calendar_dates.txt</code></td><td>Weekly service calendars and date-specific add/remove exceptions.</td><td>Actual service-day questions must apply both. Brisbane local times can exceed 24:00 for after-midnight trips.</td></tr>
+          <tr><td><code>shapes.txt</code> (map importer)</td><td>Geographic route geometry.</td><td>One representative shape per selected route/direction, not every variation. Map snapshot stored with the frontend, separately from Lakehouse tables.</td></tr>
+          <tr><td>Suncorp Stadium venue reference</td><td>Demo reference point: latitude −27.4648, longitude 153.0095.</td><td>Manually supplied approximate venue point; not an official GTFS venue/entrance dataset. No attendance or event operations data.</td></tr>
+          <tr><td>Derived <code>venue_stop_links</code></td><td>Great-circle proximity within 1,200 metres of the venue point.</td><td>Computed from coordinates. Not walking distance, accessibility, a verified entrance route, or proof of event service.</td></tr>
+          <tr><td><a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> / <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a></td><td>Basemap and building footprints for the 3D view.</td><td>External map tiles need internet access. They are not the source of timetable or agent facts.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>Licence:</strong> the Translink dataset is <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>, attributed to Translink / Queensland Department of Transport and Main Roads. It has been filtered and transformed for this independent demo.</p>
+    <h3>Verified imported scope</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Table</th><th>Rows</th><th>Table</th><th>Rows</th></tr></thead>
+      <tbody>
+        <tr><td>Routes</td><td>64: 8 bus / 56 rail service patterns</td><td>Trips</td><td>23,161</td></tr>
+        <tr><td>Served stops / parent stations</td><td>860</td><td>Scheduled stop calls</td><td>595,587</td></tr>
+        <tr><td>Service calendars</td><td>29</td><td>Date exceptions</td><td>24</td></tr>
+        <tr><td>Venues</td><td>1</td><td>Venue–stop proximity links</td><td>30</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">These are feed-wide counts—not daily departures, passengers or unique physical rail lines. The map separately displays 3,573 geographically selected stop/platform/parent records; its scope differs intentionally from the 860 records served by the selected routes in Fabric.</p>
+  </section>
+
+  <section id="architecture">
+    <span class="eyebrow">03 · DEPLOYED ARCHITECTURE</span>
+    <h2>One Fabric app, two data paths</h2>
+    <p><strong>Data preparation:</strong> download official data → validate → store managed tables → bind business entities.</p>
+    <div class="flow" role="group" aria-label="Data ingestion flow from Translink to the ontology">
+      <div class="node"><strong>1. Translink GTFS ZIP</strong><small>Public schedules, stops, trips, calendars. Static snapshot.</small></div>
+      <div class="node"><strong>2. Fabric notebook</strong><small>Translink_Ingest_GTFS downloads to Lakehouse Files, checks keys/joins and calculates venue proximity.</small></div>
+      <div class="node"><strong>3. TranslinkNetwork</strong><small>Managed Delta tables in the Lakehouse; queried through its SQL analytics endpoint.</small></div>
+      <div class="node"><strong>4. TranslinkTransportV2</strong><small>8 entity types and 7 relationships bind business concepts to the source tables.</small></div>
+    </div>
+    <p><strong>Live chat:</strong> a signed-in user asks a question → the hosted function invokes the ontology agent → the agent queries bound data → evidence returns to the UI.</p>
+    <div class="flow" role="group" aria-label="Deployed chat request flow">
+      <div class="node"><strong>1. Rayfin web UI</strong><small>Protected static hosting in Fabric. MapLibre renders the map. Fabric brokered sign-in gates access.</small></div>
+      <div class="node"><strong>2. planner function</strong><small>Typed Rayfin client invocation. Function runs in Fabric; resource tokens stay server-side.</small></div>
+      <div class="node"><strong>3. V2 ontology agent</strong><small>MCP ask_ontology resolves entity context, queries the bound sources, and returns an answer with evidence.</small></div>
+      <div class="node"><strong>4. Presenter / planner</strong><small>Reads the answer, source citations and returned evidence. Checks values against known data and limitations.</small></div>
+    </div>
+    <p class="flow-label"><strong>Map path:</strong> frontend's local GTFS geometry snapshot + external map tiles → browser map. <strong>What-if sliders:</strong> browser → deterministic arithmetic. Neither path is a live demand model.</p>
+    <h3>What the ontology connects</h3>
+    <p><code>Route → Trip → StopCall → Stop</code><br>
+      <code>Service → Trip</code> and <code>Service → ServiceException</code><br>
+      <code>Venue → VenueStopLink → Stop</code></p>
+    <p>These describe business relationships; physical joins can run from the foreign-key side toward the key side. Source data stays in the Lakehouse; the ontology supplies meaning and bindings.</p>
+    <div class="callout"><strong>Identity boundary:</strong> Fabric sign-in and app permission authorize the user to invoke the app. Under Rayfin application authentication, external Fabric queries run as the <strong>app item owner</strong>, not each visitor. This was explicitly approved for this public-data demo. It is not per-user row-level security on the external Lakehouse. Tokens are not returned to the browser.</div>
+    <p><strong>Deployment:</strong> TranslinkPlannerApp is a Rayfin <code>AppBackend</code> item in the Translink workspace. The web UI and planner function are hosted in Fabric. App-owned database and storage services are disabled; the app reuses the existing Lakehouse and ontology. <strong>No Azure App Service was provisioned.</strong></p>
+    <p class="muted">The earlier separate TranslinkPlanner data agent and original V1 ontology still exist for the optional legacy binding inspector. The deployed chat uses the V2 ontology directly, not that older agent.</p>
+    <p><a href="https://app.fabric.microsoft.com/groups/68067d79-2c1d-4c80-89fe-42087c7890f5/appbackends/12e35b97-3730-418a-866a-043e201959e4" target="_blank" rel="noopener noreferrer">Manage Rayfin app</a> ·
+      <a href="https://app.fabric.microsoft.com/groups/68067d79-2c1d-4c80-89fe-42087c7890f5/list" target="_blank" rel="noopener noreferrer">Open Translink workspace</a> ·
+      <a href="https://learn.microsoft.com/en-us/fabric/apps/create-app-with-cli" target="_blank" rel="noopener noreferrer">Rayfin deployment documentation</a> ·
+      <a href="https://learn.microsoft.com/en-us/fabric/apps/functions-connect-external-resources" target="_blank" rel="noopener noreferrer">Function identity documentation</a></p>
+  </section>
+
+  <section id="questions">
+    <span class="eyebrow">04 · COPYABLE DEMO PROMPTS</span>
+    <h2>Prove facts first. Then test assumptions.</h2>
+    <p>In the app, <strong>Use Q1–Q4</strong> loads the prompt; <strong>Copy Q1–Q4</strong> copies it. The buttons here copy the same prompts for use in the app. Allow up to a few minutes for a live response; do not submit duplicate questions while one is running.</p>
+    <p id="copy-status" role="status" aria-live="polite"></p>
+    <article class="question">
+      <span class="badge">Q1 · Event access</span><h3>Which buses could support a stadium event?</h3>
+      <p id="q1" class="prompt">Which bus routes in our selected network have scheduled calls at stops within 1,200 metres straight-line of Suncorp Stadium? Show distinct route numbers and public route names, using Venue, VenueStopLink, StopCall, Trip and Route. These are candidates for event planning, not confirmed event services or walking access. Cite the source; put query details in Evidence.</p>
+      <button type="button" data-copy="q1">Copy Q1</button>
+      <p class="expected">Expected output: a deduplicated candidate bus-route list with public names and a proximity limitation.</p>
+      <blockquote>“This identifies corridors worth investigating. The agent follows actual service calls, not just lines passing near the stadium. We still need walking links and a dated event timetable before treating these as usable event journeys.”</blockquote>
+      <p><strong>Evidence to show:</strong> Venue → VenueStopLink → StopCall → Trip → Route, filter to bus, deduplicate route IDs. VenueStopLink and StopCall connect through their shared Stop key. The 1,200-metre radius is straight-line.</p>
+    </article>
+    <article class="question">
+      <span class="badge">Q2 · Closure exposure</span><h3>What if Milton station closes?</h3>
+      <p id="q2" class="prompt">If Milton station is unavailable, which selected rail service patterns would be affected? Use actual scheduled calls at Milton station platforms. Compute the total distinct rail route IDs over ALL matching routes BEFORE limiting displayed examples; do not count just the top five. Show that total and up to five public route-name examples. This is a hypothetical closure across the feed, not a dated disruption forecast. Do not invent replacement routes or passenger impacts. Cite sources; put query details in Evidence.</p>
+      <button type="button" data-copy="q2">Copy Q2</button>
+      <p class="expected">Expected output: the total distinct rail service patterns, counted before limiting to five examples. No invented passenger impact or replacement journey.</p>
+      <blockquote>“We can identify the services exposed to a closure. This is not a prediction of cancellations: we must select a service date and model the actual closure and replacement plan before operational decisions.”</blockquote>
+      <p><strong>Evidence to show:</strong> Milton platform records → StopCall → Trip → rail Route. Deduplicate routes, not stop-call rows. Inspect station matching and service scope in the query.</p>
+    </article>
+    <article class="question">
+      <span class="badge">Q3 · Extra event buses</span><h3>Would extra evening buses reduce waiting?</h3>
+      <p id="q3" class="prompt">For planning extra route 385 buses after a Suncorp Stadium event, assume the headway changes from 20 minutes to 10 minutes. How would expected waiting time and services per hour change? Assume uniform passenger arrivals and evenly spaced services. Clearly label the result hypothetical, not the actual event timetable, demand or fleet feasibility. Put calculations in Evidence.</p>
+      <button type="button" data-copy="q3">Copy Q3</button>
+      <p class="expected">Expected: waiting 20 ÷ 2 = 10 → 10 ÷ 2 = 5 minutes; services/hour 60 ÷ 20 = 3 → 60 ÷ 10 = 6.</p>
+      <blockquote>“We now switch from retrieved facts to explicitly hypothetical inputs. This is reproducible arithmetic, not a dated timetable, fleet feasibility analysis or demand forecast.”</blockquote>
+      <p><strong>Evidence to show:</strong> input headways, assumptions and formula. Any source-table counts in the answer only establish context; they do not validate those hypothetical headways.</p>
+    </article>
+    <article class="question">
+      <span class="badge">Q4 · Interchange reliability</span><h3>Would a late train break a bus connection?</h3>
+      <p id="q4" class="prompt">At Roma Street, assume a connecting bus departs 8 minutes after the planned train arrival, with zero transfer walking time and no holding. If the train arrives 10 minutes late, is that hypothetical connection still possible? Give the remaining margin and state what dated timetable and minimum-transfer information is needed to assess a real connection. Put calculations in Evidence.</p>
+      <button type="button" data-copy="q4">Copy Q4</button>
+      <p class="expected">Expected: 8 − 10 = −2 minutes; the hypothetical connection is missed by 2 minutes.</p>
+      <blockquote>“The arithmetic is straightforward. A real assessment needs a service date, actual trips/stops, calendar exceptions, minimum transfer times and any holding rules.”</blockquote>
+      <p><strong>Evidence to show:</strong> assumed margin/delay, calculation, missing walking-transfer rules. The current scenario calculator is not date-aware and does not simulate network-wide impacts.</p>
+    </article>
+  </section>
+
+  <section id="what-if">
+    <span class="eyebrow">05 · LIVE WHAT-IF WALKTHROUGH</span>
+    <h2>Event exit: better frequency, but a fragile connection</h2>
+    <p class="muted">A one-minute script. Read the “Say” column while changing the controls.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Do</th><th>Say</th></tr></thead>
+      <tbody>
+        <tr><td>Select route 61 → What if?</td><td>“Let's look at getting people home after a stadium event. These are assumptions we can change—not the current timetable.”</td></tr>
+        <tr><td>Set headways to 20 → 10 minutes.</td><td>“What if we run buses every ten minutes instead of every twenty?”</td></tr>
+        <tr><td>Set arrival shift to 9; transfer window to 8. Compare.</td><td>“Average waiting drops from ten minutes to five. But if a train arrives nine minutes late and the bus was due eight minutes after its planned arrival, the connection is missed by one minute.”</td></tr>
+        <tr><td>Change the transfer window to 12. Compare.</td><td>“What if we allow twelve minutes between the train and bus? With the same delay, three minutes remain.”</td></tr>
+        <tr><td>Pause on the comparison.</td><td>“So more frequent buses can reduce waiting, while a larger connection window gives us more room for delays. Before making a real change, we'd check the dated timetable, walking time and available buses and drivers.”</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><strong>One sentence to remember:</strong> “We are comparing options, not predicting an actual journey.” Waiting assumes evenly spaced buses and passengers arriving uniformly. The margin excludes walking and holding.</div>
+    <details>
+    <summary>Presenter backup: exact values, calculations and the 10-minute delay example</summary>
+    <p><strong>In the UI:</strong> select bus route <strong>61</strong>, then open <strong>What if?</strong>. The selected route supplies context only. The values below are manually entered assumptions, not route 61's actual timetable.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Control</th><th>Set it to</th><th>Presenter explanation</th></tr></thead>
+      <tbody>
+        <tr><td>Baseline headway</td><td>20 minutes</td><td>Assume one service every 20 minutes.</td></tr>
+        <tr><td>Proposed headway</td><td>10 minutes</td><td>Compare doubling the service frequency.</td></tr>
+        <tr><td>Arrival shift (later)</td><td>9 minutes</td><td>Assume the arriving train is nine minutes late.</td></tr>
+        <tr><td>Assumed transfer window</td><td>8 minutes</td><td>Assume eight minutes between the planned train arrival and bus departure; this simplified model excludes walking and holding.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Select <strong>Compare scenario</strong>.</p>
+    <div class="callout">
+      <strong>Exact result for these inputs:</strong>
+      <ul>
+        <li>Expected waiting: <strong>10.0 → 5.0 minutes</strong> — five minutes less.</li>
+        <li>Services per hour: <strong>3.0 → 6.0</strong>.</li>
+        <li>Connection margin: <strong>8 − 9 = −1 minute</strong> — hypothetical connection missed by one minute.</li>
+      </ul>
+    </div>
+    <blockquote>“Under evenly spaced services and uniform passenger arrivals, doubling frequency halves expected waiting. But a nine-minute train delay exceeds our eight-minute connection window. Better frequency and connection reliability are different planning questions.”</blockquote>
+    <h3>Make the sensitivity visible</h3>
+    <ol>
+      <li>Change arrival shift to <strong>10 minutes</strong> and compare again: the hypothetical connection is missed by <strong>2 minutes</strong>.</li>
+      <li>Change the assumed transfer window to <strong>12 minutes</strong>, keeping the 10-minute shift: the remaining hypothetical margin is <strong>2 minutes</strong>. That is not proof of a usable transfer without walking/accessibility data.</li>
+      <li>Return to <strong>Questions</strong> and use Q3/Q4 to discuss the same assumptions with the ontology agent. Q4 uses 10 minutes, so its two-minute result differs intentionally from the screenshot's nine-minute/one-minute example.</li>
+    </ol>
+    <p><strong>Where the information comes from:</strong> route names and map context come from the GTFS snapshot. Headways, arrival shift and transfer window come from the controls you set. The comparison is local deterministic arithmetic: expected wait = headway ÷ 2; services/hour = 60 ÷ headway; transfer margin = window − shift. It does not retrieve those values from Fabric or modify an operational timetable.</p>
+    <p><strong>What the planner must validate next:</strong> a real service date and event finish time; active trip calendars and exceptions; actual stop times; minimum pedestrian-transfer/accessibility times; holding rules; vehicle/driver availability and passenger demand. None of those is established by adjusting these sliders.</p>
+    <blockquote>“Use this as a transparent conversation about alternatives. We have not demonstrated that an actual train or bus connection will be missed, that a replacement service is feasible, or that these changes meet demand.”</blockquote>
+    </details>
+  </section>
+
+  <section id="accuracy">
+    <span class="eyebrow">06 · CONFIDENCE WITHOUT OVERCLAIMING</span>
+    <h2>How do we check accuracy?</h2>
+    <ul>
+      <li><strong>Data integrity:</strong> ingestion checks required files, nonempty/unique entity keys and relevant foreign-key relationships before writing managed tables. A manifest records source URL, import timestamp, archive SHA-256, schemas and readback counts.</li>
+      <li><strong>Real deployment:</strong> Rayfin deployment and management health were confirmed. Browser tests exercised the protected sign-in gate and the actual hosted function—not just localhost.</li>
+      <li><strong>Known-answer baseline:</strong> earlier retrieval checks returned 8 bus / 56 rail route IDs and 30 venue-stop links, matching independently recorded data. The planner-oriented questions above must additionally verify the service-call joins and station filters; baseline counts alone do not prove those answers.</li>
+      <li><strong>Calculation tests:</strong> focused tests cover waiting-time arithmetic, transfer-margin boundaries, invalid input and the response-format bug. Eight unit tests and the frontend build passed before the latest guide update.</li>
+      <li><strong>Visible evidence:</strong> show source tables, query text and returned evidence. It is an audit-oriented explanation, not private AI reasoning. The evidence panel can contain the agent's own answer rather than an independently signed execution log; a result filename or tool name alone is not proof of every claim.</li>
+      <li><strong>No absolute guarantee:</strong> AI answers can be wrong or sources stale. Do not use the demo as operational transport advice without source-level reconciliation, validated routing/transfer rules and planner review.</li>
+    </ul>
+    <div class="callout"><strong>Not in the demo:</strong> live vehicles, measured passengers/crowding, vehicle capacity, event service schedules, population/development overlays, verified walking paths, demand forecasts or a validated route optimizer. “Brisbane City Plan” data has not been ingested.</div>
+    <p><strong>Three dates to distinguish:</strong> snapshot/import date; actual service date (calendar + exceptions); and hypothetical scenario inputs (no date). The ontology includes schedule context, but the local scenario arithmetic does not apply a service date.</p>
+  </section>
+  <footer>
+    Independent business demonstration, not an official Translink application. Source snapshot: 10 November 2026. Presenter questions revised for event-access and disruption planning. Generated answers and query latency may vary; recheck before presenting.
+  </footer>
+</main>
+<script>
+  document.getElementById('print').addEventListener('click', () => window.print());
+  for (const button of document.querySelectorAll('[data-copy]')) {
+    button.addEventListener('click', async () => {
+      const id = button.dataset.copy;
+      const text = document.getElementById(id).textContent.trim();
+      const status = document.getElementById('copy-status');
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = `${id.toUpperCase()} copied. Paste it into Ask Fabric.`;
+      } catch (error) {
+        console.error('Prompt copy failed:', error);
+        status.textContent = 'Clipboard unavailable. Select the prompt text and copy it manually.';
+      }
+    });
+  }
+</script>
+</body>
+</html>

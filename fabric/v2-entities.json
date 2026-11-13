@@ -1,0 +1,1081 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"values\":[{\"lineageTag\":\"9c3994e8-846f-46df-b821-be1de4e6aac6\",\"name\":\"Route\",\"description\":\"Transit route definition with public route identifiers, route names, route type, and operating mode.\",\"backingTable\":\"Route\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"route_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"mode\",\"description\":\"Transport mode label for the route.\",\"lineageTag\":\"842c1341-1cce-4487-ab16-83c489d25e83\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Route\",\"column\":\"mode\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"transport mode\",\"service mode\",\"route mode\"],\"annotations\":[]},{\"name\":\"route_id\",\"lineageTag\":\"2d5eb665-cd54-4222-8063-2eaba897176a\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Route\",\"column\":\"route_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"route_long_name\",\"description\":\"Long public route name.\",\"lineageTag\":\"6d39f8c7-220d-458e-827b-0c02059a3e2d\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Route\",\"column\":\"route_long_name\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"long name\",\"route long name\",\"public route name\"],\"annotations\":[]},{\"name\":\"route_short_name\",\"description\":\"Short public route name or number.\",\"lineageTag\":\"9517f38e-3093-49cd-923c-f9069a9869fe\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Route\",\"column\":\"route_short_name\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"short name\",\"route short name\",\"public short name\"],\"annotations\":[]},{\"name\":\"route_type\",\"description\":\"Numeric route classification code.\",\"lineageTag\":\"c18701b1-088b-45eb-ac06-b0f4010d8b15\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Route\",\"column\":\"route_type\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"route category\",\"transit mode code\",\"GTFS route type\"],\"annotations\":[]}],\"synonyms\":[\"Transit routes\",\"Bus routes\",\"Line routes\",\"Service routes\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"1f3bdb2c-3791-4e9d-9875-214eb62105c9\",\"name\":\"Service\",\"description\":\"Service calendar that defines operating weekdays and date span.\",\"backingTable\":\"Service\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"service_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"end_date\",\"description\":\"Service calendar end date stored as text in YYYYMMDD format.\",\"lineageTag\":\"1a83c327-24bb-47c5-87e2-1500dee2e227\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"end_date\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"end date\",\"calendar end\"],\"annotations\":[]},{\"name\":\"friday\",\"description\":\"Service operates on Friday.\",\"lineageTag\":\"16aa20ba-15c6-489e-a549-19e070bd73d3\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"friday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Friday\",\"friday flag\",\"active Friday\"],\"annotations\":[]},{\"name\":\"monday\",\"description\":\"Service operates on Monday.\",\"lineageTag\":\"a7832edb-c283-467b-ab2f-b8addfd0b3fe\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"monday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Monday\",\"monday flag\",\"active Monday\"],\"annotations\":[]},{\"name\":\"saturday\",\"description\":\"Service operates on Saturday.\",\"lineageTag\":\"7200450c-82dd-4fef-82c8-79f443abaa1e\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"saturday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Saturday\",\"saturday flag\",\"active Saturday\"],\"annotations\":[]},{\"name\":\"service_id\",\"lineageTag\":\"385537f9-8f1a-475b-8511-b0cb1e74c118\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"service_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"start_date\",\"description\":\"Service calendar start date stored as text in YYYYMMDD format.\",\"lineageTag\":\"3d61a1ec-1490-4ce3-b56a-acca634f6d13\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"start_date\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"start date\",\"calendar start\"],\"annotations\":[]},{\"name\":\"sunday\",\"description\":\"Service operates on Sunday.\",\"lineageTag\":\"254eb6aa-7ee0-4d1c-92ff-28fbe15b45b9\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"sunday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Sunday\",\"sunday flag\",\"active Sunday\"],\"annotations\":[]},{\"name\":\"thursday\",\"description\":\"Service operates on Thursday.\",\"lineageTag\":\"e4e82a82-c953-4d9f-ab57-df9d08f44b12\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"thursday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Thursday\",\"thursday flag\",\"active Thursday\"],\"annotations\":[]},{\"name\":\"tuesday\",\"description\":\"Service operates on Tuesday.\",\"lineageTag\":\"bebc4378-d0a0-427a-b705-6e9077b0c3a0\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"tuesday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Tuesday\",\"tuesday flag\",\"active Tuesday\"],\"annotations\":[]},{\"name\":\"wednesday\",\"description\":\"Service operates on Wednesday.\",\"lineageTag\":\"84078aff-06c3-4873-be48-e369782c4798\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Service\",\"column\":\"wednesday\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"runs Wednesday\",\"wednesday flag\",\"active Wednesday\"],\"annotations\":[]}],\"synonyms\":[\"Services\",\"Calendars\",\"Service calendars\",\"Operating calendars\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"f69990d6-87b5-4cd3-8d87-ecce21d3f4cd\",\"name\":\"ServiceException\",\"description\":\"Service-date exception record that adds or removes service on a specific calendar date.\",\"backingTable\":\"ServiceException\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"exception_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"exception_id\",\"lineageTag\":\"70436666-cc4d-445e-8969-2c509e530a63\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"ServiceException\",\"column\":\"exception_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"exception_type\",\"description\":\"Calendar exception category code.\",\"lineageTag\":\"8e4b42a9-a15b-4ea2-95e6-7fdb0823d059\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"ServiceException\",\"column\":\"exception_type\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"exception category\",\"service change type\",\"GTFS exception type\"],\"annotations\":[]},{\"name\":\"service_date\",\"description\":\"Date the exception applies to, stored as text in YYYYMMDD format.\",\"lineageTag\":\"229dfd19-0250-4509-afdf-74cf41867ae3\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"ServiceException\",\"column\":\"service_date\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"exception date\",\"service date\",\"calendar date\"],\"annotations\":[]},{\"name\":\"service_id\",\"description\":\"Service calendar identifier affected by the exception.\",\"lineageTag\":\"60c4dce0-448a-457a-8de4-dd62b355ed20\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"ServiceException\",\"column\":\"service_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"service identifier\",\"calendar identifier\"],\"annotations\":[]}],\"synonyms\":[\"Service exceptions\",\"Calendar exceptions\",\"Service date exceptions\",\"Schedule exceptions\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"46cc6700-9b07-4dc7-b251-6bbf07d9aecb\",\"name\":\"Stop\",\"description\":\"Transit stop or station with hierarchy and geographic coordinates.\",\"backingTable\":\"Stop\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"stop_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"latitude\",\"lineageTag\":\"e573ed5e-79db-4e2c-82e0-c266acd070f1\",\"dataType\":\"double\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"latitude\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"location_type\",\"description\":\"Stop location classification code.\",\"lineageTag\":\"c468f53c-0fb1-4b60-9445-3bd3f7381388\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"location_type\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"location type\",\"stop type\",\"location category\"],\"annotations\":[]},{\"name\":\"longitude\",\"lineageTag\":\"14daf656-01f6-42c1-b438-6e2f07bc81b7\",\"dataType\":\"double\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"longitude\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"parent_station\",\"description\":\"Parent station identifier when the stop belongs to a station or platform group.\",\"lineageTag\":\"4e49d659-fef9-411e-9c58-842f383dff18\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"parent_station\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"parent stop\",\"station id\",\"station parent\"],\"annotations\":[]},{\"name\":\"stop_id\",\"lineageTag\":\"0743cbd4-0333-431c-858b-f2908d43ee47\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"stop_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"stop_name\",\"lineageTag\":\"ae966068-01ad-48ac-92fa-6cf69fade1d7\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Stop\",\"column\":\"stop_name\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]}],\"synonyms\":[\"Stops\",\"Stations\",\"Transit stops\",\"Stop points\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"28667682-73a6-4881-a77a-92422ac5be48\",\"name\":\"StopCall\",\"description\":\"Scheduled call of a trip at a stop, including sequence and arrival/departure times.\",\"backingTable\":\"StopCall\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"stop_call_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"arrival_seconds\",\"description\":\"Scheduled arrival offset in seconds from midnight.\",\"lineageTag\":\"8176de6c-6c2d-401e-898b-e3b3216827a7\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"arrival_seconds\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"arrival seconds\",\"seconds after midnight\"],\"annotations\":[]},{\"name\":\"arrival_time\",\"description\":\"Scheduled arrival clock time.\",\"lineageTag\":\"0f04a7be-0b09-4ea0-a786-e5836388e338\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"arrival_time\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"arrival\",\"arrival clock time\"],\"annotations\":[]},{\"name\":\"departure_seconds\",\"description\":\"Scheduled departure offset in seconds from midnight.\",\"lineageTag\":\"f1003c52-5d49-40eb-81fd-e201a97b1672\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"departure_seconds\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"departure seconds\",\"seconds after midnight\"],\"annotations\":[]},{\"name\":\"departure_time\",\"description\":\"Scheduled departure clock time.\",\"lineageTag\":\"f13a17c7-3661-4f15-bc49-d095303e2af4\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"departure_time\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"departure\",\"departure clock time\"],\"annotations\":[]},{\"name\":\"stop_call_id\",\"lineageTag\":\"5921c008-04c7-430b-a04d-d6bb95a02262\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"stop_call_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"stop_id\",\"description\":\"Stop identifier for the stop call.\",\"lineageTag\":\"44c11e56-30cd-4e82-aef6-37c46d3ebb22\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"stop_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"stop identifier\",\"stop key\"],\"annotations\":[]},{\"name\":\"stop_sequence\",\"description\":\"Stop order within the trip.\",\"lineageTag\":\"8014d005-fe12-4466-b823-9f398513e9d3\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"stop_sequence\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"sequence\",\"stop order\",\"call sequence\"],\"annotations\":[]},{\"name\":\"trip_id\",\"description\":\"Trip identifier for the stop call.\",\"lineageTag\":\"159ae929-89aa-4010-9e19-e60720ad1b72\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"StopCall\",\"column\":\"trip_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"trip identifier\",\"trip key\"],\"annotations\":[]}],\"synonyms\":[\"Stop calls\",\"Stop times\",\"Stop visits\",\"Scheduled stop calls\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"70830920-648e-4c71-94ca-44fd40ba6347\",\"name\":\"Trip\",\"description\":\"Scheduled trip instance on a route and service calendar, with destination headsign, shape, and direction.\",\"backingTable\":\"Trip\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"trip_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"direction_id\",\"description\":\"Direction indicator for the trip.\",\"lineageTag\":\"56fe667d-3ca8-4414-9c4b-3dbb9a23687d\",\"dataType\":\"int64\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"direction_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"direction\",\"outbound/inbound flag\"],\"annotations\":[]},{\"name\":\"route_id\",\"description\":\"Route identifier for the trip.\",\"lineageTag\":\"c3a88472-4b06-4eac-9fac-88814ffdb79b\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"route_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"route identifier\",\"route key\"],\"annotations\":[]},{\"name\":\"service_id\",\"description\":\"Service calendar identifier for the trip.\",\"lineageTag\":\"4236c45c-5d9a-4877-8bff-662307acef38\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"service_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"service identifier\",\"calendar identifier\"],\"annotations\":[]},{\"name\":\"shape_id\",\"description\":\"Shape identifier for the trip path.\",\"lineageTag\":\"bb3a5754-03fd-47a2-a3ef-66615e9e42c9\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"shape_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"shape\",\"path id\",\"route shape\"],\"annotations\":[]},{\"name\":\"trip_headsign\",\"description\":\"Displayed destination or headsign for the trip.\",\"lineageTag\":\"78f6cf9d-dc61-438c-b165-bf700a3ec9dd\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"trip_headsign\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"headsign\",\"destination\",\"trip destination\"],\"annotations\":[]},{\"name\":\"trip_id\",\"lineageTag\":\"2ee3fb4e-23a7-4e2f-ab4d-67711252ae82\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Trip\",\"column\":\"trip_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]}],\"synonyms\":[\"Trips\",\"Service trips\",\"Journey instances\",\"Scheduled runs\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"fee87e07-8db8-4d14-bd8b-00076c6cd093\",\"name\":\"Venue\",\"description\":\"Venue reference point with geographic coordinates and coordinate provenance.\",\"backingTable\":\"Venue\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"venue_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"coordinate_source\",\"description\":\"Provenance or source note for the venue coordinates.\",\"lineageTag\":\"1ae36505-6c70-4ca0-9e99-d38fa9bab2ff\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Venue\",\"column\":\"coordinate_source\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"coordinate provenance\",\"location source\",\"coordinate note\"],\"annotations\":[]},{\"name\":\"latitude\",\"lineageTag\":\"dc4f6e65-4346-4d49-adbd-bbfb63317e84\",\"dataType\":\"double\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Venue\",\"column\":\"latitude\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"longitude\",\"lineageTag\":\"f731872f-7f95-48a4-8097-7799103b214b\",\"dataType\":\"double\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Venue\",\"column\":\"longitude\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"venue_id\",\"lineageTag\":\"c2f93212-bf92-4471-b33f-f5fd33ddcdb6\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Venue\",\"column\":\"venue_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"venue_name\",\"description\":\"Display name of the venue.\",\"lineageTag\":\"8fb81011-c8a1-4bf4-a6da-2395279b33e5\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"Venue\",\"column\":\"venue_name\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"name\",\"venue title\"],\"annotations\":[]}],\"synonyms\":[\"Venues\",\"Event venues\",\"Stadiums\",\"Destinations\"],\"annotations\":[],\"resourceLinks\":[]},{\"lineageTag\":\"4bbc9d20-6ac9-4e94-a81c-3b4c70fa7764\",\"name\":\"VenueStopLink\",\"description\":\"Straight-line proximity link between a venue and a stop, with distance metadata; not walking access and not evidence of event service.\",\"backingTable\":\"VenueStopLink\",\"overriddenMetadataFields\":[],\"keyProperties\":[\"link_id\"],\"additionalBackingTables\":[],\"properties\":[{\"name\":\"distance_method\",\"description\":\"Method note for the distance calculation; the source states this is approximate straight-line distance, not walking distance.\",\"lineageTag\":\"4a15effd-d78e-4acd-8b9c-0da65fb97703\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"VenueStopLink\",\"column\":\"distance_method\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"distance note\",\"proximity method\",\"method note\"],\"annotations\":[]},{\"name\":\"distance_metres\",\"description\":\"Approximate straight-line distance between the venue and stop, in metres.\",\"lineageTag\":\"4c75c545-37a3-4818-8b6f-df28bd194d45\",\"dataType\":\"double\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"VenueStopLink\",\"column\":\"distance_metres\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"distance\",\"proximity distance\",\"straight-line distance\"],\"annotations\":[]},{\"name\":\"link_id\",\"lineageTag\":\"d6c96d3b-0039-486b-bdea-efc22ea1558b\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"VenueStopLink\",\"column\":\"link_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[],\"annotations\":[]},{\"name\":\"stop_id\",\"description\":\"Stop identifier for the proximity link.\",\"lineageTag\":\"7df0195a-b968-4c94-acbf-d65e326aa314\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"VenueStopLink\",\"column\":\"stop_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"stop identifier\",\"stop key\"],\"annotations\":[]},{\"name\":\"venue_id\",\"description\":\"Venue identifier for the proximity link.\",\"lineageTag\":\"12475610-083b-4e98-a247-55166d3ee473\",\"dataType\":\"string\",\"backingConfiguration\":{\"type\":\"default\",\"valueColumn\":{\"table\":\"VenueStopLink\",\"column\":\"venue_id\"}},\"overriddenMetadataFields\":[],\"synonyms\":[\"venue identifier\",\"venue key\"],\"annotations\":[]}],\"synonyms\":[\"Venue-stop links\",\"Nearby stops\",\"Venue access links\",\"Stop proximity links\"],\"annotations\":[],\"resourceLinks\":[]}]}"
+    }
+  ],
+  "structuredContent": {
+    "values": [
+      {
+        "lineageTag": "9c3994e8-846f-46df-b821-be1de4e6aac6",
+        "name": "Route",
+        "description": "Transit route definition with public route identifiers, route names, route type, and operating mode.",
+        "backingTable": "Route",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "route_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "mode",
+            "description": "Transport mode label for the route.",
+            "lineageTag": "842c1341-1cce-4487-ab16-83c489d25e83",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Route",
+                "column": "mode"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "transport mode",
+              "service mode",
+              "route mode"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "route_id",
+            "lineageTag": "2d5eb665-cd54-4222-8063-2eaba897176a",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Route",
+                "column": "route_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "route_long_name",
+            "description": "Long public route name.",
+            "lineageTag": "6d39f8c7-220d-458e-827b-0c02059a3e2d",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Route",
+                "column": "route_long_name"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "long name",
+              "route long name",
+              "public route name"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "route_short_name",
+            "description": "Short public route name or number.",
+            "lineageTag": "9517f38e-3093-49cd-923c-f9069a9869fe",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Route",
+                "column": "route_short_name"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "short name",
+              "route short name",
+              "public short name"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "route_type",
+            "description": "Numeric route classification code.",
+            "lineageTag": "c18701b1-088b-45eb-ac06-b0f4010d8b15",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Route",
+                "column": "route_type"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "route category",
+              "transit mode code",
+              "GTFS route type"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Transit routes",
+          "Bus routes",
+          "Line routes",
+          "Service routes"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "1f3bdb2c-3791-4e9d-9875-214eb62105c9",
+        "name": "Service",
+        "description": "Service calendar that defines operating weekdays and date span.",
+        "backingTable": "Service",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "service_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "end_date",
+            "description": "Service calendar end date stored as text in YYYYMMDD format.",
+            "lineageTag": "1a83c327-24bb-47c5-87e2-1500dee2e227",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "end_date"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "end date",
+              "calendar end"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "friday",
+            "description": "Service operates on Friday.",
+            "lineageTag": "16aa20ba-15c6-489e-a549-19e070bd73d3",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "friday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Friday",
+              "friday flag",
+              "active Friday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "monday",
+            "description": "Service operates on Monday.",
+            "lineageTag": "a7832edb-c283-467b-ab2f-b8addfd0b3fe",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "monday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Monday",
+              "monday flag",
+              "active Monday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "saturday",
+            "description": "Service operates on Saturday.",
+            "lineageTag": "7200450c-82dd-4fef-82c8-79f443abaa1e",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "saturday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Saturday",
+              "saturday flag",
+              "active Saturday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "service_id",
+            "lineageTag": "385537f9-8f1a-475b-8511-b0cb1e74c118",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "service_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "start_date",
+            "description": "Service calendar start date stored as text in YYYYMMDD format.",
+            "lineageTag": "3d61a1ec-1490-4ce3-b56a-acca634f6d13",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "start_date"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "start date",
+              "calendar start"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "sunday",
+            "description": "Service operates on Sunday.",
+            "lineageTag": "254eb6aa-7ee0-4d1c-92ff-28fbe15b45b9",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "sunday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Sunday",
+              "sunday flag",
+              "active Sunday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "thursday",
+            "description": "Service operates on Thursday.",
+            "lineageTag": "e4e82a82-c953-4d9f-ab57-df9d08f44b12",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "thursday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Thursday",
+              "thursday flag",
+              "active Thursday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "tuesday",
+            "description": "Service operates on Tuesday.",
+            "lineageTag": "bebc4378-d0a0-427a-b705-6e9077b0c3a0",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "tuesday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Tuesday",
+              "tuesday flag",
+              "active Tuesday"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "wednesday",
+            "description": "Service operates on Wednesday.",
+            "lineageTag": "84078aff-06c3-4873-be48-e369782c4798",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Service",
+                "column": "wednesday"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "runs Wednesday",
+              "wednesday flag",
+              "active Wednesday"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Services",
+          "Calendars",
+          "Service calendars",
+          "Operating calendars"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "f69990d6-87b5-4cd3-8d87-ecce21d3f4cd",
+        "name": "ServiceException",
+        "description": "Service-date exception record that adds or removes service on a specific calendar date.",
+        "backingTable": "ServiceException",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "exception_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "exception_id",
+            "lineageTag": "70436666-cc4d-445e-8969-2c509e530a63",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "ServiceException",
+                "column": "exception_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "exception_type",
+            "description": "Calendar exception category code.",
+            "lineageTag": "8e4b42a9-a15b-4ea2-95e6-7fdb0823d059",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "ServiceException",
+                "column": "exception_type"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "exception category",
+              "service change type",
+              "GTFS exception type"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "service_date",
+            "description": "Date the exception applies to, stored as text in YYYYMMDD format.",
+            "lineageTag": "229dfd19-0250-4509-afdf-74cf41867ae3",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "ServiceException",
+                "column": "service_date"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "exception date",
+              "service date",
+              "calendar date"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "service_id",
+            "description": "Service calendar identifier affected by the exception.",
+            "lineageTag": "60c4dce0-448a-457a-8de4-dd62b355ed20",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "ServiceException",
+                "column": "service_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "service identifier",
+              "calendar identifier"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Service exceptions",
+          "Calendar exceptions",
+          "Service date exceptions",
+          "Schedule exceptions"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "46cc6700-9b07-4dc7-b251-6bbf07d9aecb",
+        "name": "Stop",
+        "description": "Transit stop or station with hierarchy and geographic coordinates.",
+        "backingTable": "Stop",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "stop_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "latitude",
+            "lineageTag": "e573ed5e-79db-4e2c-82e0-c266acd070f1",
+            "dataType": "double",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "latitude"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "location_type",
+            "description": "Stop location classification code.",
+            "lineageTag": "c468f53c-0fb1-4b60-9445-3bd3f7381388",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "location_type"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "location type",
+              "stop type",
+              "location category"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "longitude",
+            "lineageTag": "14daf656-01f6-42c1-b438-6e2f07bc81b7",
+            "dataType": "double",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "longitude"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "parent_station",
+            "description": "Parent station identifier when the stop belongs to a station or platform group.",
+            "lineageTag": "4e49d659-fef9-411e-9c58-842f383dff18",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "parent_station"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "parent stop",
+              "station id",
+              "station parent"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "stop_id",
+            "lineageTag": "0743cbd4-0333-431c-858b-f2908d43ee47",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "stop_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "stop_name",
+            "lineageTag": "ae966068-01ad-48ac-92fa-6cf69fade1d7",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Stop",
+                "column": "stop_name"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Stops",
+          "Stations",
+          "Transit stops",
+          "Stop points"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "28667682-73a6-4881-a77a-92422ac5be48",
+        "name": "StopCall",
+        "description": "Scheduled call of a trip at a stop, including sequence and arrival/departure times.",
+        "backingTable": "StopCall",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "stop_call_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "arrival_seconds",
+            "description": "Scheduled arrival offset in seconds from midnight.",
+            "lineageTag": "8176de6c-6c2d-401e-898b-e3b3216827a7",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "arrival_seconds"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "arrival seconds",
+              "seconds after midnight"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "arrival_time",
+            "description": "Scheduled arrival clock time.",
+            "lineageTag": "0f04a7be-0b09-4ea0-a786-e5836388e338",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "arrival_time"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "arrival",
+              "arrival clock time"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "departure_seconds",
+            "description": "Scheduled departure offset in seconds from midnight.",
+            "lineageTag": "f1003c52-5d49-40eb-81fd-e201a97b1672",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "departure_seconds"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "departure seconds",
+              "seconds after midnight"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "departure_time",
+            "description": "Scheduled departure clock time.",
+            "lineageTag": "f13a17c7-3661-4f15-bc49-d095303e2af4",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "departure_time"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "departure",
+              "departure clock time"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "stop_call_id",
+            "lineageTag": "5921c008-04c7-430b-a04d-d6bb95a02262",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "stop_call_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "stop_id",
+            "description": "Stop identifier for the stop call.",
+            "lineageTag": "44c11e56-30cd-4e82-aef6-37c46d3ebb22",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "stop_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "stop identifier",
+              "stop key"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "stop_sequence",
+            "description": "Stop order within the trip.",
+            "lineageTag": "8014d005-fe12-4466-b823-9f398513e9d3",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "stop_sequence"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "sequence",
+              "stop order",
+              "call sequence"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "trip_id",
+            "description": "Trip identifier for the stop call.",
+            "lineageTag": "159ae929-89aa-4010-9e19-e60720ad1b72",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "StopCall",
+                "column": "trip_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "trip identifier",
+              "trip key"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Stop calls",
+          "Stop times",
+          "Stop visits",
+          "Scheduled stop calls"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "70830920-648e-4c71-94ca-44fd40ba6347",
+        "name": "Trip",
+        "description": "Scheduled trip instance on a route and service calendar, with destination headsign, shape, and direction.",
+        "backingTable": "Trip",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "trip_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "direction_id",
+            "description": "Direction indicator for the trip.",
+            "lineageTag": "56fe667d-3ca8-4414-9c4b-3dbb9a23687d",
+            "dataType": "int64",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "direction_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "direction",
+              "outbound/inbound flag"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "route_id",
+            "description": "Route identifier for the trip.",
+            "lineageTag": "c3a88472-4b06-4eac-9fac-88814ffdb79b",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "route_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "route identifier",
+              "route key"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "service_id",
+            "description": "Service calendar identifier for the trip.",
+            "lineageTag": "4236c45c-5d9a-4877-8bff-662307acef38",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "service_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "service identifier",
+              "calendar identifier"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "shape_id",
+            "description": "Shape identifier for the trip path.",
+            "lineageTag": "bb3a5754-03fd-47a2-a3ef-66615e9e42c9",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "shape_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "shape",
+              "path id",
+              "route shape"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "trip_headsign",
+            "description": "Displayed destination or headsign for the trip.",
+            "lineageTag": "78f6cf9d-dc61-438c-b165-bf700a3ec9dd",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "trip_headsign"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "headsign",
+              "destination",
+              "trip destination"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "trip_id",
+            "lineageTag": "2ee3fb4e-23a7-4e2f-ab4d-67711252ae82",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Trip",
+                "column": "trip_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Trips",
+          "Service trips",
+          "Journey instances",
+          "Scheduled runs"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "fee87e07-8db8-4d14-bd8b-00076c6cd093",
+        "name": "Venue",
+        "description": "Venue reference point with geographic coordinates and coordinate provenance.",
+        "backingTable": "Venue",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "venue_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "coordinate_source",
+            "description": "Provenance or source note for the venue coordinates.",
+            "lineageTag": "1ae36505-6c70-4ca0-9e99-d38fa9bab2ff",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Venue",
+                "column": "coordinate_source"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "coordinate provenance",
+              "location source",
+              "coordinate note"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "latitude",
+            "lineageTag": "dc4f6e65-4346-4d49-adbd-bbfb63317e84",
+            "dataType": "double",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Venue",
+                "column": "latitude"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "longitude",
+            "lineageTag": "f731872f-7f95-48a4-8097-7799103b214b",
+            "dataType": "double",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Venue",
+                "column": "longitude"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "venue_id",
+            "lineageTag": "c2f93212-bf92-4471-b33f-f5fd33ddcdb6",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Venue",
+                "column": "venue_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "venue_name",
+            "description": "Display name of the venue.",
+            "lineageTag": "8fb81011-c8a1-4bf4-a6da-2395279b33e5",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "Venue",
+                "column": "venue_name"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "name",
+              "venue title"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Venues",
+          "Event venues",
+          "Stadiums",
+          "Destinations"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      },
+      {
+        "lineageTag": "4bbc9d20-6ac9-4e94-a81c-3b4c70fa7764",
+        "name": "VenueStopLink",
+        "description": "Straight-line proximity link between a venue and a stop, with distance metadata; not walking access and not evidence of event service.",
+        "backingTable": "VenueStopLink",
+        "overriddenMetadataFields": [],
+        "keyProperties": [
+          "link_id"
+        ],
+        "additionalBackingTables": [],
+        "properties": [
+          {
+            "name": "distance_method",
+            "description": "Method note for the distance calculation; the source states this is approximate straight-line distance, not walking distance.",
+            "lineageTag": "4a15effd-d78e-4acd-8b9c-0da65fb97703",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "VenueStopLink",
+                "column": "distance_method"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "distance note",
+              "proximity method",
+              "method note"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "distance_metres",
+            "description": "Approximate straight-line distance between the venue and stop, in metres.",
+            "lineageTag": "4c75c545-37a3-4818-8b6f-df28bd194d45",
+            "dataType": "double",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "VenueStopLink",
+                "column": "distance_metres"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "distance",
+              "proximity distance",
+              "straight-line distance"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "link_id",
+            "lineageTag": "d6c96d3b-0039-486b-bdea-efc22ea1558b",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "VenueStopLink",
+                "column": "link_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [],
+            "annotations": []
+          },
+          {
+            "name": "stop_id",
+            "description": "Stop identifier for the proximity link.",
+            "lineageTag": "7df0195a-b968-4c94-acbf-d65e326aa314",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "VenueStopLink",
+                "column": "stop_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "stop identifier",
+              "stop key"
+            ],
+            "annotations": []
+          },
+          {
+            "name": "venue_id",
+            "description": "Venue identifier for the proximity link.",
+            "lineageTag": "12475610-083b-4e98-a247-55166d3ee473",
+            "dataType": "string",
+            "backingConfiguration": {
+              "type": "default",
+              "valueColumn": {
+                "table": "VenueStopLink",
+                "column": "venue_id"
+              }
+            },
+            "overriddenMetadataFields": [],
+            "synonyms": [
+              "venue identifier",
+              "venue key"
+            ],
+            "annotations": []
+          }
+        ],
+        "synonyms": [
+          "Venue-stop links",
+          "Nearby stops",
+          "Venue access links",
+          "Stop proximity links"
+        ],
+        "annotations": [],
+        "resourceLinks": []
+      }
+    ]
+  },
+  "isError": false
+}

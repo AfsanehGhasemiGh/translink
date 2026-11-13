@@ -1,0 +1,22 @@
+{
+  "itemId": "12e35b97-3730-418a-866a-043e201959e4",
+  "itemName": "TranslinkPlannerApp",
+  "itemType": "AppBackend",
+  "workspaceId": "68067d79-2c1d-4c80-89fe-42087c7890f5",
+  "hostingUrl": "https://wide-grove-1455796ee4-westus.webapp.fabricapps.net",
+  "portalUrl": "https://app.fabric.microsoft.com/groups/68067d79-2c1d-4c80-89fe-42087c7890f5/appbackends/12e35b97-3730-418a-866a-043e201959e4",
+  "ontologyId": "1a3f6ea0-52fc-458f-a34b-c1561cdc50cb",
+  "identity": "Fabric app owner through Rayfin application authentication; explicitly approved for public Translink demo data",
+  "protectedHosting": true,
+  "verified": {
+    "fabricSignIn": true,
+    "connectionCheck": true,
+    "q1": "8 bus and 56 rail route IDs, with bound source and executed query",
+    "q2": "30 venue-stop links; nearest stops 814, 815, 817; straight-line qualifier and query evidence",
+    "q3": "Illustrative expected wait 10 to 5 minutes; services/hour 3 to 6",
+    "q4": "Hypothetical connection missed by 2 minutes",
+    "copyQ1": true,
+    "askButtonEnabledAfterResponses": true,
+    "unitTestsPassed": 8
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "entities": {
+    "Route": {
+      "id": "1238468229873585",
+      "binding": "4502d6af-2216-45ff-8af3-38d1352b35f7",
+      "properties": {
+        "route_id": "1201527994536128",
+        "route_short_name": "1033976217310770",
+        "route_long_name": "1212868772268128",
+        "route_type": "1051992344375962",
+        "mode": "1036559579936690"
+      }
+    },
+    "Trip": {
+      "id": "1086521783248956",
+      "binding": "b14398a3-a007-4f19-810e-9f8a22a99644",
+      "properties": {
+        "trip_id": "1026591839971546",
+        "route_id": "1202052217257948",
+        "service_id": "1118328684145975",
+        "trip_headsign": "1175684481174938",
+        "shape_id": "1117455590886290",
+        "direction_id": "1192261832848759"
+      }
+    },
+    "Stop": {
+      "id": "1187269084380490",
+      "binding": "6d5f74c1-0b5b-403f-8b74-1132cde18c94",
+      "properties": {
+        "stop_id": "1024161652252126",
+        "stop_name": "1192925093329150",
+        "parent_station": "1033743717203968",
+        "latitude": "1187266964109262",
+        "longitude": "1045884448404389",
+        "location_type": "1108534452523405"
+      }
+    },
+    "StopCall": {
+      "id": "1203259214924484",
+      "binding": "1854426e-26c8-4a09-a3ef-effb06c92a62",
+      "properties": {
+        "stop_call_id": "1213270728270452",
+        "trip_id": "1274675687737408",
+        "stop_id": "1185967147192763",
+        "stop_sequence": "1205653402390367",
+        "arrival_time": "1130323568408680",
+        "departure_time": "1043085926663471",
+        "arrival_seconds": "1278140906006991",
+        "departure_seconds": "1181202554451846"
+      }
+    },
+    "Service": {
+      "id": "1170802050174840",
+      "binding": "eb1cbfda-3fd5-4981-9455-d168df3e09d7",
+      "properties": {
+        "service_id": "1274284659156798",
+        "monday": "1066642387865713",
+        "tuesday": "1104487155232047",
+        "wednesday": "1118387563373035",
+        "thursday": "1064858603481199",
+        "friday": "1134681596118799",
+        "saturday": "1195930658987795",
+        "sunday": "1215549289585272",
+        "start_date": "1120006826459654",
+        "end_date": "1125926712778563"
+      }
+    },
+    "ServiceException": {
+      "id": "1273503063838855",
+      "binding": "5c6375c1-23f4-4df3-8725-4515571ac49d",
+      "properties": {
+        "exception_id": "1024548847844350",
+        "service_id": "1127364714045805",
+        "service_date": "1210253545499228",
+        "exception_type": "1218835760865175"
+      }
+    },
+    "Venue": {
+      "id": "1190683849148644",
+      "binding": "8ee01ec6-7a8a-483d-b4e5-97bb1c97b1ed",
+      "properties": {
+        "venue_id": "1116881826329261",
+        "venue_name": "1004448939042542",
+        "latitude": "1099757251749796",
+        "longitude": "1023483495292903",
+        "coordinate_source": "1255279726974177"
+      }
+    },
+    "VenueStopLink": {
+      "id": "1263267102378241",
+      "binding": "5c2caa21-86e3-47e7-8934-b824a3545109",
+      "properties": {
+        "link_id": "1250048601087885",
+        "venue_id": "1186466801154896",
+        "stop_id": "1007960205311278",
+        "distance_metres": "1269516398083495",
+        "distance_method": "1215439013618528"
+      }
+    }
+  },
+  "relationships": {
+    "HasTrip": {
+      "id": "1183131883938207",
+      "contextualization": "37eda587-f2d4-45a0-9497-f980bd75ebb0"
+    },
+    "HasCall": {
+      "id": "1160217321724306",
+      "contextualization": "c2e2c61c-7ee7-4fdb-8244-67119d8246a5"
+    },
+    "CallsAt": {
+      "id": "1176391758088758",
+      "contextualization": "29fd1f15-92a2-460a-aa1a-1b7ec6d79536"
+    },
+    "SchedulesTrip": {
+      "id": "1194827750085302",
+      "contextualization": "9235f1a9-4b2f-432d-bd45-eb2ad93babf6"
+    },
+    "HasException": {
+      "id": "1183695593482340",
+      "contextualization": "076e528b-c2d5-4192-a05e-9bd0351a1e61"
+    },
+    "HasNearbyLink": {
+      "id": "1166878853805306",
+      "contextualization": "671053d9-cd86-4814-abc8-265c632a1c4f"
+    },
+    "RefersToStop": {
+      "id": "1181382910893458",
+      "contextualization": "d5b8f035-fee1-459c-827e-8ebc577514c0"
+    }
+  }
+}

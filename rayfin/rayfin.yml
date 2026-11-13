@@ -1,0 +1,35 @@
+id: translinkplannerapp
+name: TranslinkPlannerApp
+version: 1.0.0
+services:
+  auth:
+    enabled: true
+    fabric:
+      enabled: true
+      externalEntraExchange: true
+    password:
+      enabled: false
+    allowedRedirectUris:
+      - http://127.0.0.1:5173
+      - http://localhost:5174
+      - http://127.0.0.1:5174
+      - https://wide-grove-1455796ee4-westus.webapp.fabricapps.net
+  data:
+    enabled: false
+  staticHosting:
+    enabled: true
+    path: .
+    folder: dist
+    buildCommand: npm run build:fabric
+    indexDocument: index.html
+    assetAccess: protected
+    embedded:
+      only: false
+  functions:
+    enabled: true
+    path: rayfin/functions
+    auth:
+      type: application
+    buildCommand: npm run build
+  storage:
+    enabled: false
